@@ -1,3 +1,4 @@
+#  **“Hybrid Approach: Machine Learning–Enhanced Traditional Regression in Explaining Firm Value”**
 
 ## ABSTRACT 
 
@@ -8,7 +9,8 @@ Feature importance and SHAP analysis highlight EBITDA, dividend policy, ROA, and
 The findings demonstrate that integrating econometric and machine learning approaches enhances both predictive accuracy and economic interpretability, offering a promising methodological direction for contemporary corporate finance research.
 
 ---
-Correlation table 
+ **Table 1: Correlation table**
+
 |              | Q        | MV       | GP       | FCF_TA   | TANG     | CH       | ROA     | ROE      | NPM      | LIQ      | Z_SCORE   | LEV      | SIZE    | EBITDA_TA   | OPM     | GROWTH_SALES   | DIV_DUMMY   |
 |:-------------|:---------|:---------|:---------|:---------|:---------|:---------|:--------|:---------|:---------|:---------|:----------|:---------|:--------|:------------|:--------|:---------------|:------------|
 | Q            | 1.0***   |          |          |          |          |          |         |          |          |          |           |          |         |             |         |                |             |
@@ -29,9 +31,9 @@ Correlation table
 | GROWTH_SALES | 0.01*    | 0.01*    | 0.02**   | 0.02***  | -0.02**  | 0.0      | 0.02*** | 0.03***  | 0.01*    | 0.0      | 0.01      | -0.0     | 0.02*** | 0.04***     | 0.02*** | 1.0***         |             |
 | DIV_DUMMY    | -0.18*** | -0.18*** | 0.13***  | 0.11***  | 0.07***  | -0.07*** | 0.31*** | 0.24***  | 0.11***  | 0.04***  | 0.15***   | -0.2***  | 0.27*** | 0.35***     | 0.19*** | -0.02***       | 1.0***      |
 
+---
 
-
-Linear model results 
+**Linear model results** 
 |            |   Train_R2 |   Train_RMSE |   Train_MAE |   Test_R2 |   Test_RMSE |   Test_MAE |
 |:-----------|-----------:|-------------:|------------:|----------:|------------:|-----------:|
 | Linear     |     0.2440 |       1.2274 |      0.6192 |    0.1354 |      1.5397 |     0.7934 |
@@ -39,12 +41,35 @@ Linear model results
 | LASSO      |     0.2437 |       1.2276 |      0.6184 |    0.1421 |      1.5337 |     0.7916 |
 | ElasticNet |     0.2438 |       1.2276 |      0.6182 |    0.1409 |      1.5347 |     0.7915 |
 
-Non-Linear model results
-|              | Train_R2 | Train_RMSE | Train_MAE |  Test_R2 | Test_RMSE | Test_MAE |
-| :----------- | -------: | ---------: | --------: | -------: | --------: | -------: |
-| RandomForest | 0.815811 |   0.605844 |  0.257205 | 0.524536 |   1.14175 | 0.629778 |
-| XGBoost      | 0.905893 |   0.433051 |  0.271977 | 0.605959 |    1.0394 | 0.588784 |
-| LightGBM     | 0.848439 |   0.549569 |  0.332363 | 0.594872 |   1.05393 | 0.585077 |
+---
+
+**Non-Linear model results**
+|              |   Train_R2 |   Train_RMSE |   Train_MAE |   Test_R2 |   Test_RMSE |   Test_MAE |
+|:-------------|-----------:|-------------:|------------:|----------:|------------:|-----------:|
+| RandomForest |     0.8158 |       0.6058 |      0.2572 |    0.5245 |      1.1418 |     0.6298 |
+| XGBoost      |     0.9059 |       0.4331 |      0.2720 |    0.6060 |      1.0394 |     0.5888 |
+| LightGBM     |     0.8484 |       0.5496 |      0.3324 |    0.5949 |      1.0539 |     0.5851 |
+
+
+---
+
+<img width="551" height="379" alt="Figure 2025-10-30 202703" src="https://github.com/user-attachments/assets/8bd3f73a-65f5-4ff2-9247-d8eae68a0746" />
+
+<img width="551" height="379" alt="Figure 2025-10-30 202810" src="https://github.com/user-attachments/assets/5e12971e-5393-4618-adaa-a392f716df4a" />
+
+<img width="551" height="379" alt="Figure 2025-10-30 202824" src="https://github.com/user-attachments/assets/01c1a845-f9f4-4103-b731-ace9572415a1" />
+
+---
+
+<img width="552" height="533" alt="Figure 2025-10-30 202853" src="https://github.com/user-attachments/assets/3f8ab649-0b2d-4b5b-89d9-2dfd4d5f5630" />
+
+<img width="552" height="533" alt="Figure 2025-10-30 202841" src="https://github.com/user-attachments/assets/4bd83167-3785-4079-81ba-584f11b2c2e7" />
+
+<img width="550" height="533" alt="Figure 2025-10-30 203059" src="https://github.com/user-attachments/assets/4e98b304-1e97-4f46-8349-dba7e6573b9b" />
+
+
+---
+
 
 
 Hybird model metric 
@@ -52,21 +77,11 @@ Hybird model metric
 | -------: | ------: | ---------: | --------: | --------: | -------: | ------------: | ---------------: |
 | 0.867841 | 0.62049 |    0.51319 |   1.02006 |  0.306461 | 0.586578 |          0.19 |             0.81 |
 
----
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+<img width="550" height="400" alt="image" src="https://github.com/user-attachments/assets/af1daf59-230d-4951-93b7-128da46ff8ae" />
 
 
 
@@ -88,5 +103,6 @@ PanelOLS F.E
 | Effects          | IND, Time                           | IND, Time                           | IND, Time                           | IND, Time                           |
 
 T-stats in parentheses. Stars: *** p<0.01.
+
 
 
