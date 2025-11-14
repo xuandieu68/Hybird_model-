@@ -41,7 +41,8 @@ The findings demonstrate that integrating econometric and machine learning appro
 | LASSO      |     0.2437 |       1.2276 |      0.6184 |    0.1421 |      1.5337 |     0.7916 |
 | ElasticNet |     0.2438 |       1.2276 |      0.6182 |    0.1409 |      1.5347 |     0.7915 |
 
----
+In table 2, the estimation results show that the linear econometric model group (Ridge, LASSO, Elastic Net) has an out-of-sample coefficient of determination (R²) ranging from 0.135–0.145 and with MV as the dependent variable, it shows a slightly better performance than Tobins’ Q, but still reflects a relatively limited explanatory power. This is partly explained by the complex relationship between financial variables and firm value – especially the threshold, nonlinear, or interaction effects that are not captured by the linear model.
+In contrast, the results in both panels of table 3 reveal a consistent pattern across the three nonlinear machine learning models (Random Forest, XGBoost, and LightGBM) in predicting firm value (Q and MV). These models achieve substantially higher explanatory power than the linear group, with R² values on the test set ranging from 0.52 to 0.61—more than four times higher than the linear benchmarks—while RMSE and MAE are considerably lower. Among them, XGBoost delivers the best overall performance, combining high predictive accuracy with strong generalization capability. Its results (R² = 0.606 and 0.609 for Q and MV, respectively) highlight its ability to effectively capture the complex, nonlinear interactions among key firm-level determinants such as leverage, profitability, size, and other fundamentals. Although there are slight signs of overfitting due to the very high training R², the nonlinear models—particularly XGBoost—still successfully reflect the nonlinear and multidimensional nature of the relationship between financial structure and firm value.
 
 **Non-Linear model results**
 |              |   Train_R2 |   Train_RMSE |   Train_MAE |   Test_R2 |   Test_RMSE |   Test_MAE |
@@ -52,38 +53,59 @@ The findings demonstrate that integrating econometric and machine learning appro
 
 
 ---
+In contrast, the results in both panels of table 3 reveal a consistent pattern across the three nonlinear machine learning models (Random Forest, XGBoost, and LightGBM) in predicting firm value (Q and MV). These models achieve substantially higher explanatory power than the linear group, with R² values on the test set ranging from 0.52 to 0.61—more than four times higher than the linear benchmarks—while RMSE and MAE are considerably lower. Among them, XGBoost delivers the best overall performance, combining high predictive accuracy with strong generalization capability. Its results (R² = 0.606 and 0.609 for Q and MV, respectively) highlight its ability to effectively capture the complex, nonlinear interactions among key firm-level determinants such as leverage, profitability, size, and other fundamentals. Although there are slight signs of overfitting due to the very high training R², the nonlinear models—particularly XGBoost—still successfully reflect the nonlinear and multidimensional nature of the relationship between financial structure and firm value.
 
-<img width="551" height="379" alt="Figure 2025-10-30 202703" src="https://github.com/user-attachments/assets/8bd3f73a-65f5-4ff2-9247-d8eae68a0746" />
+Based on the performance results from the 2 model groups, LASSO is selected to represent the linear group and XGBoost to represent the nonlinear group to combine in the hybrid model
 
-<img width="551" height="379" alt="Figure 2025-10-30 202810" src="https://github.com/user-attachments/assets/5e12971e-5393-4618-adaa-a392f716df4a" />
+2.  Hybird model
+Two models representing linear and nonlinear were combined with optimal weights based on the explanatory power of each model (R2):
 
-<img width="551" height="379" alt="Figure 2025-10-30 202824" src="https://github.com/user-attachments/assets/01c1a845-f9f4-4103-b731-ace9572415a1" />
-
----
-
-<img width="552" height="533" alt="Figure 2025-10-30 202853" src="https://github.com/user-attachments/assets/3f8ab649-0b2d-4b5b-89d9-2dfd4d5f5630" />
-
-<img width="552" height="533" alt="Figure 2025-10-30 202841" src="https://github.com/user-attachments/assets/4bd83167-3785-4079-81ba-584f11b2c2e7" />
-
-<img width="550" height="533" alt="Figure 2025-10-30 203059" src="https://github.com/user-attachments/assets/4e98b304-1e97-4f46-8349-dba7e6573b9b" />
+$$
+\hat{y}_{\text{hybrid}} = w_1 \hat{y}_{\text{lasso}} + w_2 \hat{y}_{\text{xgb}}, \quad \text{with} \quad w_1 + w_2 = 1
+$$
 
 
----
+Table 4: Hybird model metric performance
+
+|     | Train_R2 | Test_R2 | Train_RMSE | Test_RMSE | Train_MAE | Test_MAE | Weight_Linear | Weight_Nonlinear |
+| --- | -------- | ------- | ---------- | --------- | --------- | -------- | ------------- | ---------------- |
+| Q   | 0.8678   | 0.6205  | 0.5132     | 1.0200      | 0.3065    | 0.5866   | 0.19          | 0.81             |
+| MV  | 0.8721   | 0.6216  | 0.5014     | 1.0162    | 0.2998    | 0.5794   | 0.19       | 0.81           |
+
+The results in Table 4 indicate that the hybrid model, constructed by combining LASSO and XGBoost based on their (R2)-weighted contributions (0.19 and 0.81), achieves higher predictive performance than either model alone. The hybrid approach yields a test (R2) of approximately 0.62 for both firm value measures (Q and MV), with reductions in RMSE and MAE relative to the individual models. Although the improvement in (R2) is modest, the model exhibits reduced overfitting compared to XGBoost, suggesting that the linear-weighted component effectively regularizes predictions in regions where the relationship between variables is predominantly linear. At the same time, the nonlinear learning capacity inherited from XGBoost is retained, allowing the hybrid model to capture complex interactions among firm characteristics. Overall, these findings confirm the complementarity between econometric interpretability and machine-learning flexibility, supporting the hybrid model as a more balanced and robust framework for predicting firm value.
+
+ Fig 1. Sensitivity analysis
+<img width="961" height="313" alt="image" src="https://github.com/user-attachments/assets/b245f2c8-8ead-4cb9-95d7-ebd0ed74160b" />
+
+The study also examined the sensitivity of the results to changes in the weights. The results in Figure 1 show that the R² of the hybrid model is maximized(0.6214 and 0.6228) when the linear weight w_linear = 0.15 for both panels, confirming that this combination provides optimal forecasting performance while maintaining the economic significance of the variables in the explanatory part.
+
+3. Feature Importance Analysis
+   
+$$
+S_{\text{hybrid}} = w_1 \times |\beta_{\text{lasso}}| + w_2 \times I_{\text{xgb}}
+$$
 
 
+<figure>
+  <img width="1042" height="405" alt="image" src="https://github.com/user-attachments/assets/f1d6f22a-5458-4a8f-a156-a9feb9e3a999" />
+  <figcaption style="text-align:center;font-style:italic;">Figure 1. Initial Variable Importance across Machine Learning Models</figcaption>
+</figure>
 
-Hybird model metric 
-| Train_R2 | Test_R2 | Train_RMSE | Test_RMSE | Train_MAE | Test_MAE | Weight_Linear | Weight_Nonlinear |
-| -------: | ------: | ---------: | --------: | --------: | -------: | ------------: | ---------------: |
-| 0.867841 | 0.62049 |    0.51319 |   1.02006 |  0.306461 | 0.586578 |          0.19 |             0.81 |
+In all three non-linear models in fig 2.1 and 2.2, the significant variables are highly consistent, with most appearing in the top 5 of each model,  firm size (SIZE), profitability (EBITDA_TA, ROA), and financial stability (Z_SCORE) along with DIV_DUMMY being the main predictors of firm value. These results imply that larger, more profitable, and financially stable firms tend to achieve higher valuations, reflecting both operational efficiency and lower risk exposure. Meanwhile, financial policy variables such as leverage (LEV) and dividend policy show secondary but notable effects, suggesting that firms’ financing and payout decisions still convey information about firm quality. The high degree of consistency across models underscores the robustness of these findings, while slight differences in feature rankings reveal the distinct ways each algorithm captures nonlinear relationships among firm characteristics
 
-
-
-
-
-<img width="550" height="400" alt="image" src="https://github.com/user-attachments/assets/af1daf59-230d-4951-93b7-128da46ff8ae" />
+<img width="900" height="393" alt="image" src="https://github.com/user-attachments/assets/9242d16b-bbed-4b12-9e95-aeed99c339e1" />
 
 
+Figure 3. Top 10 Hybrid Feature Importance combining LASSO and XGBoost
+<img width="913" height="398" alt="image" src="https://github.com/user-attachments/assets/c8eb545a-3186-40d0-801d-439b5e68ea49" />
+
+
+Figure 3 illustrates the feature importance of the hybrid model that combines LASSO and XGBoost using R² -based weights. The results show that EBITDA/TA, DIV_DUMMY, ROA, and SIZE remain the most influential variables, consistent with the nonlinear models, indicating that firm fundamentals continue to drive firm value. The appearance of CH and Z_SCORE among the moderately important features reflects the linear model’s contribution in emphasizing liquidity and financial stability. A noticeable difference between the two panels is that LEV is relatively important in the model with Q as the dependent variable but becomes less significant in the MV model, suggesting that leverage affects market-based firm value to a lesser extent.
+
+Figure 4. SHAP value plots
+<img width="913" height="396" alt="image" src="https://github.com/user-attachments/assets/14507732-9be6-4a19-aaec-adecfad15877" />
+
+Figure 4 visualizes the SHAP value distributions for Random Forest, XGBoost, and LightGBM, providing insights into both the direction and magnitude of each variable’s nonlinear contribution to firm value predictions
 
 ---
 PanelOLS F.E 
