@@ -33,27 +33,33 @@ The findings demonstrate that integrating econometric and machine learning appro
 
 ---
 
-**Linear model results** 
-|            |   Train_R2 |   Train_RMSE |   Train_MAE |   Test_R2 |   Test_RMSE |   Test_MAE |
-|:-----------|-----------:|-------------:|------------:|----------:|------------:|-----------:|
-| Linear     |     0.2440 |       1.2274 |      0.6192 |    0.1354 |      1.5397 |     0.7934 |
-| Ridge      |     0.2440 |       1.2274 |      0.6192 |    0.1354 |      1.5396 |     0.7934 |
-| LASSO      |     0.2437 |       1.2276 |      0.6184 |    0.1421 |      1.5337 |     0.7916 |
-| ElasticNet |     0.2438 |       1.2276 |      0.6182 |    0.1409 |      1.5347 |     0.7915 |
+**Table 2 Linear model results** 
+|            | Train_R2 | Train_RMSE | Train_MAE | Test_R2 | Test_RMSE | Test_MAE |
+| :--------- | -------: | ---------: | --------: | ------: | --------: | -------: |
+|            |          |  Panel A : |         Q |         |           |          |
+| Ridge      |   0.2440 |     1.2274 |    0.6192 |  0.1354 |    1.5396 |   0.7934 |
+| LASSO      |   0.2437 |     1.2276 |    0.6184 |  0.1421 |    1.5337 |   0.7916 |
+| ElasticNet |   0.2438 |     1.2276 |    0.6182 |  0.1409 |    1.5347 |   0.7915 |
+|            |          |  Panel B : |        MV |         |           |          |
+| Ridge      |   0.2453 |     1.2179 |    0.6087 |  0.1378 |    1.5339 |   0.7886 |
+| LASSO      |   0.2450 |     1.2181 |    0.6080 |  0.1451 |    1.5275 |   0.7864 |
+| ElasticNet |   0.2451 |     1.2181 |    0.6079 |  0.1437 |    1.5286 |   0.7865 |
 
 In table 2, the estimation results show that the linear econometric model group (Ridge, LASSO, Elastic Net) has an out-of-sample coefficient of determination (R²) ranging from 0.135–0.145 and with MV as the dependent variable, it shows a slightly better performance than Tobins’ Q, but still reflects a relatively limited explanatory power. This is partly explained by the complex relationship between financial variables and firm value – especially the threshold, nonlinear, or interaction effects that are not captured by the linear model.
 In contrast, the results in both panels of table 3 reveal a consistent pattern across the three nonlinear machine learning models (Random Forest, XGBoost, and LightGBM) in predicting firm value (Q and MV). These models achieve substantially higher explanatory power than the linear group, with R² values on the test set ranging from 0.52 to 0.61—more than four times higher than the linear benchmarks—while RMSE and MAE are considerably lower. Among them, XGBoost delivers the best overall performance, combining high predictive accuracy with strong generalization capability. Its results (R² = 0.606 and 0.609 for Q and MV, respectively) highlight its ability to effectively capture the complex, nonlinear interactions among key firm-level determinants such as leverage, profitability, size, and other fundamentals. Although there are slight signs of overfitting due to the very high training R², the nonlinear models—particularly XGBoost—still successfully reflect the nonlinear and multidimensional nature of the relationship between financial structure and firm value.
 
-**Non-Linear model results**
-|              |   Train_R2 |   Train_RMSE |   Train_MAE |   Test_R2 |   Test_RMSE |   Test_MAE |
-|:-------------|-----------:|-------------:|------------:|----------:|------------:|-----------:|
-| RandomForest |     0.8158 |       0.6058 |      0.2572 |    0.5245 |      1.1418 |     0.6298 |
-| XGBoost      |     0.9059 |       0.4331 |      0.2720 |    0.6060 |      1.0394 |     0.5888 |
-| LightGBM     |     0.8484 |       0.5496 |      0.3324 |    0.5949 |      1.0539 |     0.5851 |
+**Table 3 Non-Linear model results**
+|              | Train_R2 | Train_RMSE | Train_MAE | Test_R2 | Test_RMSE | Test_MAE |
+| :----------- | -------: | ---------: | --------: | ------: | --------: | -------: |
+|              |          |  Panel A : |         Q |         |           |          |
+| RandomForest |   0.8158 |     0.6058 |    0.2572 |  0.5245 |    1.1418 |   0.6298 |
+| XGBoost      |   0.9059 |     0.4331 |    0.2720 |  0.6060 |    1.0394 |   0.5888 |
+| LightGBM     |   0.8484 |     0.5496 |    0.3324 |  0.5949 |    1.0539 |   0.5851 |
+|              |          |  Panel B : |        MV |         |           |          |
+| RandomForest |   0.8149 |     0.6031 |    0.2539 |  0.5194 |    1.1452 |   0.6299 |
+| XGBoost      |   0.9101 |     0.4203 |    0.2652 |  0.6086 |    1.0335 |   0.5802 |
+| LightGBM     |   0.8312 |     0.5760 |    0.3394 |  0.5920 |    1.0552 |   0.5846 |
 
-
----
-In contrast, the results in both panels of table 3 reveal a consistent pattern across the three nonlinear machine learning models (Random Forest, XGBoost, and LightGBM) in predicting firm value (Q and MV). These models achieve substantially higher explanatory power than the linear group, with R² values on the test set ranging from 0.52 to 0.61—more than four times higher than the linear benchmarks—while RMSE and MAE are considerably lower. Among them, XGBoost delivers the best overall performance, combining high predictive accuracy with strong generalization capability. Its results (R² = 0.606 and 0.609 for Q and MV, respectively) highlight its ability to effectively capture the complex, nonlinear interactions among key firm-level determinants such as leverage, profitability, size, and other fundamentals. Although there are slight signs of overfitting due to the very high training R², the nonlinear models—particularly XGBoost—still successfully reflect the nonlinear and multidimensional nature of the relationship between financial structure and firm value.
 
 Based on the performance results from the 2 model groups, LASSO is selected to represent the linear group and XGBoost to represent the nonlinear group to combine in the hybrid model
 
@@ -72,7 +78,7 @@ Table 4: Hybird model metric performance
 | Q   | 0.8678   | 0.6205  | 0.5132     | 1.0200      | 0.3065    | 0.5866   | 0.19          | 0.81             |
 | MV  | 0.8721   | 0.6216  | 0.5014     | 1.0162    | 0.2998    | 0.5794   | 0.19       | 0.81           |
 
-The results in Table 4 indicate that the hybrid model, constructed by combining LASSO and XGBoost based on their (R2)-weighted contributions (0.19 and 0.81), achieves higher predictive performance than either model alone. The hybrid approach yields a test (R2) of approximately 0.62 for both firm value measures (Q and MV), with reductions in RMSE and MAE relative to the individual models. Although the improvement in (R2) is modest, the model exhibits reduced overfitting compared to XGBoost, suggesting that the linear-weighted component effectively regularizes predictions in regions where the relationship between variables is predominantly linear. At the same time, the nonlinear learning capacity inherited from XGBoost is retained, allowing the hybrid model to capture complex interactions among firm characteristics. Overall, these findings confirm the complementarity between econometric interpretability and machine-learning flexibility, supporting the hybrid model as a more balanced and robust framework for predicting firm value.
+The results in Table 4 indicate that the hybrid model, constructed by combining LASSO and XGBoost based on their R²-weighted contributions (0.19 and 0.81), achieves higher predictive performance than either model alone. The hybrid approach yields a test R² of approximately 0.62 for both firm value measures (Q and MV), with reductions in RMSE and MAE relative to the individual models. Although the improvement in R² is modest, the model exhibits reduced overfitting compared to XGBoost, suggesting that the linear-weighted component effectively regularizes predictions in regions where the relationship between variables is predominantly linear. At the same time, the nonlinear learning capacity inherited from XGBoost is retained, allowing the hybrid model to capture complex interactions among firm characteristics. Overall, these findings confirm the complementarity between econometric interpretability and machine-learning flexibility, supporting the hybrid model as a more balanced and robust framework for predicting firm value.
 
  Fig 1. Sensitivity analysis
 <img width="961" height="313" alt="image" src="https://github.com/user-attachments/assets/b245f2c8-8ead-4cb9-95d7-ebd0ed74160b" />
@@ -85,7 +91,7 @@ $$
 S_{\text{hybrid}} = w_1 \times |\beta_{\text{lasso}}| + w_2 \times I_{\text{xgb}}
 $$
 
-
+ 
 <figure>
   <img width="1042" height="405" alt="image" src="https://github.com/user-attachments/assets/f1d6f22a-5458-4a8f-a156-a9feb9e3a999" />
   <figcaption style="text-align:center;font-style:italic;">Figure 1. Initial Variable Importance across Machine Learning Models</figcaption>
@@ -103,8 +109,19 @@ Figure 3. Top 10 Hybrid Feature Importance combining LASSO and XGBoost
 Figure 3 illustrates the feature importance of the hybrid model that combines LASSO and XGBoost using R² -based weights. The results show that EBITDA/TA, DIV_DUMMY, ROA, and SIZE remain the most influential variables, consistent with the nonlinear models, indicating that firm fundamentals continue to drive firm value. The appearance of CH and Z_SCORE among the moderately important features reflects the linear model’s contribution in emphasizing liquidity and financial stability. A noticeable difference between the two panels is that LEV is relatively important in the model with Q as the dependent variable but becomes less significant in the MV model, suggesting that leverage affects market-based firm value to a lesser extent.
 
 Figure 4. SHAP value plots
+### For Q
 <img width="913" height="396" alt="image" src="https://github.com/user-attachments/assets/14507732-9be6-4a19-aaec-adecfad15877" />
 
+### For MV
+<table>
+  <tr>
+    <img width="330" height="400" alt="image" src="https://github.com/user-attachments/assets/f0fffe83-dcd6-420a-aa98-3d1c73542697" />
+    <img width="330" height="400" alt="image" src="https://github.com/user-attachments/assets/ee1d3fd8-abad-4d57-a824-e5374c174d36" />
+    <img width="330" height="400" alt="image" src="https://github.com/user-attachments/assets/62da4fae-fe2c-4f3a-b419-351f2e598686" />
+  </tr>
+</table>
+
+ 
 Figure 4 visualizes the SHAP value distributions for Random Forest, XGBoost, and LightGBM, providing insights into both the direction and magnitude of each variable’s nonlinear contribution to firm value predictions
 
 ---
@@ -125,6 +142,33 @@ PanelOLS F.E
 | Effects          | IND, Time                           | IND, Time                           | IND, Time                           | IND, Time                           |
 
 T-stats in parentheses. Stars: *** p<0.01.
+
+---
+
+<img width="1206" height="653" alt="image" src="https://github.com/user-attachments/assets/c78255cf-9ffa-4695-b609-6508f5114cdf" />
+
+**SHAP Dependence Plots**
+
+<img width="653" height="453" alt="image" src="https://github.com/user-attachments/assets/aa8cb198-9ed2-45cf-8f75-2f11ee3d31c8" />
+<img width="662" height="453" alt="image" src="https://github.com/user-attachments/assets/60dceed2-debe-47ca-8d2d-72fcfe3cddaf" />
+<img width="645" height="453" alt="image" src="https://github.com/user-attachments/assets/78325c82-2a75-420c-b1fe-4688fbad7121" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/f0c91d45-99ed-43fa-b249-f54592570ee4" />
+<img width="662" height="453" alt="image" src="https://github.com/user-attachments/assets/6a66732a-f7a3-4207-90d6-9004645a9737" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/c3d64710-b66c-4784-b900-7a057100ace9" />
+<img width="654" height="453" alt="image" src="https://github.com/user-attachments/assets/27bec632-a63d-46ad-9037-35154afa31c7" />
+<img width="683" height="453" alt="image" src="https://github.com/user-attachments/assets/4b48e225-9e0f-4076-a2a4-04e153c7f5e0" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/8ecceef2-e8b1-4fcc-9ed3-6131dc30a2c1" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/004649a2-f049-4b89-9abf-5b12893a9282" />
+<img width="653" height="453" alt="image" src="https://github.com/user-attachments/assets/a915c903-5093-457f-a867-35e05b85a3ec" />
+
+
+
+
+
+
+
+
+
 
 
 
