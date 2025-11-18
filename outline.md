@@ -88,7 +88,7 @@
 * 각 모형의 feature important 통해 모델이 학습 및 출력 예측에 사용하는 중요한 변수들을 밝히다
   *  Feature Importance(랜덤 포레스트, XGBoost 또는 LightGBM에서와 같이)는 각 변수가 전체 모델 트리에서 예측 오류를 줄이거나 불순도(impurity)를 감소시키는 데 기여하는 평균 정도를 측정합니다.	이는 데이터 분리에 대한 변수의 전반적인 힘을 반영하지만, 영향의 방향(양 또는 음)은 고려하지 않으며, 해당 변수가 여러 값을 가지거나 다른 변수와 높은 상관관계를 가질 경우 편향될 수 있습니다.
 
-* SHAP과 결합하여 각 변수가 기업 가치에 미치는 영향과 그 영향력의 정도를 검토
+* SHAP과 결합하여 각 변수가 기업 가치에 미치는 영향과 그 영향력의 정도를 시각화·정량화
    * 	SHAP 값은 Shapley 게임 이론(Shapley Additive Explanations)에 기반하여 각 관측값에서 각 변수의 한계 기여도를 추정합니다. SHAP은 예측값의 증가/감소 방향과 변수 간의 비선형성 또는 상호작용 정도를 모두 나타냅니다.
 
 
@@ -158,7 +158,7 @@ Table 4: Hybird model metric performance
   <figcaption style="text-align:center;font-style:italic;">Figure 1. Initial Variable Importance across Machine Learning Models</figcaption>
 </figure>
 
-In all three non-linear models in fig 2.1 and 2.2, the significant variables are highly consistent, with most appearing in the top 5 of each model,  firm size (SIZE), profitability (EBITDA_TA, ROA), and financial stability (Z_SCORE) along with DIV_DUMMY being the main predictors of firm value. These results imply that larger, more profitable, and financially stable firms tend to achieve higher valuations, reflecting both operational efficiency and lower risk exposure. Meanwhile, financial policy variables such as leverage (LEV) and dividend policy show secondary but notable effects, suggesting that firms’ financing and payout decisions still convey information about firm quality. The high degree of consistency across models underscores the robustness of these findings, while slight differences in feature rankings reveal the distinct ways each algorithm captures nonlinear relationships among firm characteristics
+그림 2.1과 2.2의 세 가지 비선형 모델 모두에서 유의미한 변수는 일관성이 높으며, 대부분 각 모델에서 상위 5개에 속하는 기업 규모(SIZE), 수익성(EBITDA_TA, ROA), 재무 안정성(Z_SCORE)과 함께 DIV_DUMMY가 기업 가치의 주요 예측 변수로 나타났습니다.  모델 간의 높은 일관성은 이러한 결과의 견고함을 강조하며, 특징 순위의 약간의 차이는 각 알고리즘이 기업 특성 간의 비선형 관계를 포착하는 뚜렷한 방식을 보여줍니다.
 
 
 <img width="900" height="393" alt="image" src="https://github.com/user-attachments/assets/9242d16b-bbed-4b12-9e95-aeed99c339e1" />
@@ -182,6 +182,7 @@ Figure 4. SHAP value plots
   </tr>
 </table>
 
+모델에서 변수들의 SHAP 값 분포의 유사성을 살펴보면, Size의 증가가 SHAP 값과 긍정적인 상관관계를 가지며, 마찬가지로 Z_SCORE도 모델 출력과 긍정적인 상관관계를 보입니다. 반면, EBITDA_TA, ROA, OPM, NPM, ROE와 같은 수익성 변수들은 SHAP 값의 0.0을 기준으로 왼쪽과 오른쪽에 빨간 점들이 나타납니다. 하지만 왼쪽에서의 더 큰 겹침은 많은 경우 수익성이 높은 기업이 모델의 예측 값에 음의 기여를 한다는 것을 나타냅니다. 또한, 오른쪽 축에서 변수 값이 강하고 약한 값이 넓게 분포하며 섞여 있는 것은 수익성 변수들이 비선형적 관계를 가질 수 있거나 다른 변수들과 상호작용할 수 있음을 나타냅니다. LEV는 세 모델 모두에서 명확한 방향성을 보이지 않으며, 대신 상황에 따라 다른 변수들의 영향을 증폭시키거나 변경시킵니다.
 
 --
  
