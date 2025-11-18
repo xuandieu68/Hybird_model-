@@ -97,7 +97,8 @@ $$
   <figcaption style="text-align:center;font-style:italic;">Figure 1. Initial Variable Importance across Machine Learning Models</figcaption>
 </figure>
 
-In all three non-linear models in fig 2.1 and 2.2, the significant variables are highly consistent, with most appearing in the top 5 of each model,  firm size (SIZE), profitability (EBITDA_TA, ROA), and financial stability (Z_SCORE) along with DIV_DUMMY being the main predictors of firm value. These results imply that larger, more profitable, and financially stable firms tend to achieve higher valuations, reflecting both operational efficiency and lower risk exposure. Meanwhile, financial policy variables such as leverage (LEV) and dividend policy show secondary but notable effects, suggesting that firms’ financing and payout decisions still convey information about firm quality. The high degree of consistency across models underscores the robustness of these findings, while slight differences in feature rankings reveal the distinct ways each algorithm captures nonlinear relationships among firm characteristics
+In all three non-linear models in fig 2.1 and 2.2, the significant variables are highly consistent, with most appearing in the top 5 of each model,  firm size (SIZE), profitability (EBITDA_TA, ROA), and financial stability (Z_SCORE) along with DIV_DUMMY being the main predictors of firm value. 
+The high degree of consistency across models underscores the robustness of these findings, while slight differences in feature rankings reveal the distinct ways each algorithm captures nonlinear relationships among firm characteristics
 
 <img width="900" height="393" alt="image" src="https://github.com/user-attachments/assets/9242d16b-bbed-4b12-9e95-aeed99c339e1" />
 
@@ -123,6 +124,7 @@ Figure 4. SHAP value plots
 
  
 Figure 4 visualizes the SHAP value distributions for Random Forest, XGBoost, and LightGBM, providing insights into both the direction and magnitude of each variable’s nonlinear contribution to firm value predictions
+Looking at the similarity in the distribution of SHAP values of the variables in the models, we observe that the increase in Size is positively correlated with the SHAP value, and similarly, Z_SCORE also shows a positive correlation with the model output. In contrast, profitability variables such as EBITDA_TA, ROA, OPM, NPM, and ROE show red dots both on the left and right of the 0.0 SHAP value. However, the larger overlap on the left indicates that in many cases, firms with high profitability contribute negatively to the model's predicted value. Additionally, the wide spread and mixing of both strong and weak variable values on the right side of the axis suggest that profitability variables might have a non-linear relationship or interact with other variables. LEV shows no clear directional pattern across all three models—rather, it amplifies or alters the impact of other variables depending on the context
 
 ---
 PanelOLS F.E 
@@ -160,6 +162,7 @@ T-stats in parentheses. Stars: *** p<0.01.
 <img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/8ecceef2-e8b1-4fcc-9ed3-6131dc30a2c1" />
 <img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/004649a2-f049-4b89-9abf-5b12893a9282" />
 <img width="653" height="453" alt="image" src="https://github.com/user-attachments/assets/a915c903-5093-457f-a867-35e05b85a3ec" />
+
 
 
 
