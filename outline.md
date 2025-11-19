@@ -73,22 +73,30 @@
 
   * 비선형성 포착
   * 변수 간 상호작용 탐지
-
-| **Model**            | **Param**                                                                                                                                                                                               |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Random Forest (RF)** | - **n_estimators**: [100,200, 300] <br> - **max_depth**: [None, 10, 20] <br> - **min_samples_split**: [5,7,10] <br> - **min_samples_leaf**: [2, 4]                                                                   |
-| **XGBoost (XGB)**      | - **max_depth**: [2,4,6,8,10] <br> - **gamma**: [0, 0.1, 0.2, 0.3] <br> - **reg_alpha**: [0, 0.01, 0.1, 1] <br> - **reg_lambda**: [0, 0.1, 1, 10] <br> - **colsample_bytree**: [1.0] <br> - **min_child_weight**: [20] <br> - **n_estimators**: [100, 200, 300] |
-| **LightGBM (LGBM)**    | - **n_estimators**: [100, 200, 300] <br> - **max_depth**: [6, 10] <br> - **learning_rate**: [0.05, 0.1] <br> - **num_leaves**: [31, 50]                                                                        |
+                                                                    |
 
 ### 3.3 3단계: Hybrid Model 설계
 
-* 선형 + ML 결합
+* 선형 + ML 결합 (
 * **모델별 결정계수** 기반 가중치(weight) 최적화
-  
+ 
+$$
+\hat{y}_{\text{hybrid}} = w_1 \hat{y}_{\text{lasso}} + w_2 \hat{y}_{\text{xgb}}, \quad \text{with} \quad w_1 + w_2 = 1
+$$
+ 
 
 * 목적:
   * ML의 예측력 + Econometrics의 해석력 결합
-    
+| **Mô hình**                  | **Tham số**                                                                                                                                                                                               |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Random Forest (RF)**       | - **n_estimators**: [100, 300] <br> - **max_depth**: [None, 10, 20] <br> - **min_samples_split**: [10] <br> - **min_samples_leaf**: [4]                                                                   |
+| **XGBoost (XGB)**            | - **max_depth**: [6] <br> - **gamma**: [0] <br> - **reg_alpha**: [1] <br> - **reg_lambda**: [10] <br> - **colsample_bytree**: [1.0] <br> - **min_child_weight**: [20] <br> - **n_estimators**: [200, 300] |
+| **LightGBM (LGBM)**          | - **n_estimators**: [200, 300] <br> - **max_depth**: [6, 10] <br> - **learning_rate**: [0.05, 0.1] <br> - **num_leaves**: [31, 50]                                                                        |
+| **Ridge Regression (Ridge)** | - **alpha**: [0.1, 1.0, 10.0]                                                                                                                                                                             |
+| **Lasso Regression (Lasso)** | - **alpha**: [0.001, 0.01, 0.1, 1.0]                                                                                                                                                                      |
+| **ElasticNet**               | - **alpha**: [0.001, 0.01, 0.1] <br> - **l1_ratio**: [0.2, 0.5, 0.8]                                                                                                                                      |
+
+
 ### 3.4 4단계: Feature important, SHAP 분석 
 * 각 모형의 feature important 통해 모델이 학습 및 출력 예측에 사용하는 중요한 변수들을 밝히다
   *  Feature Importance(랜덤 포레스트, XGBoost 또는 LightGBM에서와 같이)는 각 변수가 전체 모델 트리에서 예측 오류를 줄이거나 불순도(impurity)를 감소시키는 데 기여하는 평균 정도를 측정합니다.	이는 데이터 분리에 대한 변수의 전반적인 힘을 반영하지만, 영향의 방향(양 또는 음)은 고려하지 않으며, 해당 변수가 여러 값을 가지거나 다른 변수와 높은 상관관계를 가질 경우 편향될 수 있습니다.
@@ -222,7 +230,7 @@ SHAP 요약 플롯은 각 특징에 대한 일반적인 개요를 제공하고, 
 
 ## VIF 
 <img width="215" height="503" alt="image" src="https://github.com/user-attachments/assets/4444d057-3a29-4fe7-9371-cd5ce2278a40" />
-SIZE có sự đa cộng tuyến cao với các biến còn lại -> phải chú ý khi hồi quy truyền thống 
+SIZE는 다른 변수들과 높은 다중공선성을 보임 -> 전통적 회귀 분석 시 주의가 필요함
 
 ## VIF with SIZE_RESID
 
