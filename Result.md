@@ -129,25 +129,36 @@ Looking at the similarity in the distribution of SHAP values of the variables in
 ---
 PanelOLS F.E 
 
-| Variable         | (1) Q                                  | (2) Q                                  | (3)   MV                               | (4) MV                                 |
-| ---------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| EBITDA_TA        | -6.1555***<br><small>(-14.646)</small> |                                        | -6.1772***<br><small>(-14.758)</small> |                                        |
-| ROA              |                                        | -3.0644***<br><small>(-11.641)</small> |                                        | -3.0515***<br><small>(-11.599)</small> |
-| SIZE             | 0.4687***<br><small>(20.444)</small>   | 0.4335***<br><small>(19.995)</small>   | 0.4725***<br><small>(20.779)</small>   | 0.4367***<br><small>(20.293)</small>   |
-| CH               | 2.7901***<br><small>(12.546)</small>   | 2.8913***<br><small>(12.699)</small>   | 2.8775***<br><small>(13.011)</small>   | 2.9818***<br><small>(13.166)</small>   |
-| LEV              | -0.3453***<br><small>(-2.8911)</small> | -0.3757***<br><small>(-2.9666)</small> | -0.0050<br><small>(-0.0423)</small>    | -0.0304<br><small>(-0.2420)</small>    |
-| Z_SCORE          | 0.4389***<br><small>(4.2093)</small>   | 0.3249***<br><small>(3.0264)</small>   | 0.4972***<br><small>(4.8858)</small>   | 0.3814***<br><small>(3.6349)</small>   |
-| GP               | 1.3265***<br><small>(8.0544)</small>   | 0.6373***<br><small>(3.8814)</small>   | 1.3522***<br><small>(8.2945)</small>   | 0.6568***<br><small>(4.0598)</small>   |
-| LIQ              | 0.0182***<br><small>(2.9983)</small>   | 0.0250***<br><small>(3.6269)</small>   | 0.0174***<br><small>(2.9347)</small>   | 0.0242***<br><small>(3.5933)</small>   |
-| No. Observations | 9,230                                  | 9,230                                  | 9,230                                  | 9,230                                  |
-| R-squared        | 0.2352                                 | 0.2121                                 | 0.2407                                 | 0.2162                                 |
-| Effects          | IND, Time                           | IND, Time                           | IND, Time                           | IND, Time                           |
+|             | 1         | 2         | 3         | 4         |
+| :---------- | :-------- | :-------- | :-------- | :-------- |
+| EBITDA_TA   | -3.893*** | -2.467*** | -3.971*** | -2.533*** |
+|             | (-7.82)   | (-5.44)   | (-8.03)   | (-5.63)   |
+| ROA         | -1.270*** | -0.852*** | -1.232*** | -0.810*** |
+|             | (-5.65)   | (-4.00)   | (-5.49)   | (-3.82)   |
+| OPM         | -0.100*** | -0.177*** | -0.098*** | -0.176*** |
+|             | (-3.34)   | (-6.19)   | (-3.29)   | (-6.18)   |
+| NPM         | -0.004    | -0.004    | -0.004    | -0.004    |
+|             | (-0.81)   | (-0.89)   | (-0.85)   | (-0.93)   |
+| SIZE        | 0.460***  |           | 0.464***  |           |
+|             | (19.88)   |           | (20.22)   |           |
+| SIZE_RESID  |           | 0.528***  |           | 0.533***  |
+|             |           | (21.11)   |           | (21.47)   |
+| CH          | 2.620***  | 2.393***  | 2.710***  | 2.481***  |
+|             | (11.54)   | (10.82)   | (12.01)   | (11.28)   |
+| LEV         | -0.465*** | -0.527*** | -0.122    | -0.184    |
+|             | (-3.96)   | (-4.52)   | (-1.04)   | (-1.59)   |
+| Z_SCORE     | 0.438***  | 0.294***  | 0.496***  | 0.351***  |
+|             | (4.14)    | (2.91)    | (4.81)    | (3.57)    |
+| GP          | 1.202***  | 1.164***  | 1.231***  | 1.193***  |
+|             | (7.46)    | (7.45)    | (7.72)    | (7.72)    |
+| LIQ         | 0.019***  | 0.020***  | 0.018***  | 0.019***  |
+|             | (3.12)    | (3.44)    | (3.05)    | (3.39)    |
+| Industry FE | Yes       | Yes       | Yes       | Yes       |
+| Year FE     | Yes       | Yes       | Yes       | Yes       |
+| N           | 9230      | 9230      | 9230      | 9230      |
+| Adj. R²     | 0.248     | 0.274     | 0.253     | 0.280     |
 
 T-stats in parentheses. Stars: *** p<0.01.
-
----
-
-<img width="1206" height="653" alt="image" src="https://github.com/user-attachments/assets/c78255cf-9ffa-4695-b609-6508f5114cdf" />
 
 **SHAP Dependence Plots**
 
@@ -162,6 +173,7 @@ T-stats in parentheses. Stars: *** p<0.01.
 <img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/8ecceef2-e8b1-4fcc-9ed3-6131dc30a2c1" />
 <img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/004649a2-f049-4b89-9abf-5b12893a9282" />
 <img width="653" height="453" alt="image" src="https://github.com/user-attachments/assets/a915c903-5093-457f-a867-35e05b85a3ec" />
+
 
 
 
