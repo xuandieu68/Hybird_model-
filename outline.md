@@ -1,5 +1,3 @@
-
-
 ### **Hybrid Approach: Machine Learning–Enhanced Traditional Regression in Explaining Firm Value**
 
 ---
