@@ -65,21 +65,21 @@ Tổng hợp từ literature:
 
 ## 1.5 Research Hypotheses
 
-[
+
 H_1: Firm value exhibits nonlinear response to profitability
-]
 
-[
+
+
 H_2: Machine learning models outperform linear models in predictive accuracy
-]
 
-[
+
+
 H_3: Hybrid models outperform standalone models
-]
 
-[
+
+
 H_4: Key determinants retain partial causal effects under DML
-]
+
 
 ---
 
@@ -176,18 +176,18 @@ Vấn đề: (E[D\varepsilon] \neq 0)
 
 ### DML Orthogonalization:
 
-[
+$
 \tilde{Y} = Y - \hat{m}(X)
-]
-[
+$
+$
 \tilde{D} = D - \hat{g}(X)
-]
+$
 
 Ước lượng:
 
-[
+$
 \hat{\beta} = \frac{\sum \tilde{D}\tilde{Y}}{\sum \tilde{D}^2}
-]
+$
 
 ---
 
