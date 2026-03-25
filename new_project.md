@@ -1,9 +1,8 @@
 
 # new project
 
-### 초록 (ABSTRACT)
 
-본 연구는 전통적인 선형 회귀 모형의 해석 가능성과 비선형 기계 학습 알고리즘의 예측 능력을 결합하여 기업 가치(Firm Value, FV)를 분석하고 예측하기 위한 하이브리드 계량경제학적-기계 학습 프레임워크 (Hybrid Econometric–Machine Learning Framework)를 개발한다. 2006년부터 2024년까지의 비금융 기업 균형 패널 데이터를 사용하여, 본 연구는 릿지(Ridge), 라쏘(LASSO), 및 엘라스틱 넷(Elastic Net)과 같은 선형 모형을 적용하여 기업 가치의 주요 결정 요인을 식별한다. 이어서, XGBoost, 랜덤 포레스트(Random Forest), 및 LightGBM이 비선형 패턴과 변수 간의 상호작용을 포착하기 위해 사용된다. 실증 분석 결과, LASSO와 XGBoost가 다른 모형들보다 우수하며, 이 둘을 결합한 가중 하이브리드 모형이 최고의 예측 성능을 달성함을 보여준다. 특성 중요도(Feature importance) 분석은 EBITDA, 배당 정책, ROA, 및 기업 규모가 기업 가치에 가장 영향력 있는 결정 요인임을 강조한다. SHAP(Shapley Additive exPlanations) 분석을 포함한 연구 결과는 계량경제학적 접근법과 기계 학습 접근법의 통합이 **예측 정확도와 경제적 해석 가능성**을 모두 향상시키며, 현대 기업 재무 연구를 위한 유망한 방법론적 방향을 제시함을 입증한다.
+
 
 ---
 
@@ -86,22 +85,22 @@ Sử dụng các cặp mô hình đặc thù cho từng thiết kế này, chún
 
 <img width="855" height="547" alt="image" src="https://github.com/user-attachments/assets/6792c3ae-6092-4085-ac6f-7c78b25260a3" />
 
-## fe
-cv 
+## feature important 
+### cv 
 
 <img width="1040" height="403" alt="image" src="https://github.com/user-attachments/assets/c892b64e-4591-4f79-b11d-8e51e14c9192" />
 
-rolling
+### rolling
 <img width="1040" height="403" alt="image" src="https://github.com/user-attachments/assets/b0716987-785d-4925-b160-45f2030ca4d2" />
 
 ## SHAP 
-cv
+### cv
 
 <img width="1991" height="591" alt="image" src="https://github.com/user-attachments/assets/72fc2aaf-c88d-47ca-8fff-82bdd86264e2" />
 
 <img width="762" height="755" alt="image" src="https://github.com/user-attachments/assets/8b3ed216-eb35-4f55-bd01-f40e7083e772" />
 
-rolling 
+### rolling 
 
 <img width="1991" height="591" alt="image" src="https://github.com/user-attachments/assets/016d5d72-faff-47b8-ada3-0ec5a2d9e1aa" />
 
@@ -112,24 +111,24 @@ rolling
 Lựa chọn lgbm để làm base cho DML là bởi vì độ ổn định mô hình thể hiện trong các kết quả metric ở cả phương pháp time sẻies cv hay là rolling. 
 theo thứ tự các feature important  và shap important của lgbm , nghiên cứu này đã tiến hành phân tích treadment của các feature top đầu để xác nhận hiệu ứng nhân quả và ảnh hưởng tới output firm value của các feature mà shap đã giải thích hay không 
 
-| Treatment   | Causal Effect (θ) | Standard Error | P-value  |
-|-------------|------------------|----------------|----------|
-| SIZE        | 0.2126           | 0.0081         | 0.0000   |
-| Z_SCORE     | 1.3017           | 0.1388         | 0.0000   |
-| EBITDA_TA   | 0.4938           | 0.3874         | 0.2024   |
-| LEV         | 1.1811           | 0.1463         | 0.0000   |
-| GP          | 0.7496           | 0.0722         | 0.0000   |
-| OPM         | 0.0869           | 0.0646         | 0.1789   |
-| ROA         | 0.3780           | 0.3626         | 0.2972   |
-| LIQ         | 0.0109           | 0.0033         | 0.0011   |
-| CH          | 0.7667           | 0.1384         | 0.0000   |
-| DIV_DUMMY   | -0.3369          | 0.0141         | 0.0000   |
 
+| Treatment   |   Theta |   Std.Error |   P-value |
+|:------------|--------:|------------:|----------:|
+| SIZE        |  0.2167 |      0.0083 |    0.0000 |
+| Z_SCORE     |  0.9279 |      0.1201 |    0.0000 |
+| LEV         |  0.7017 |      0.1119 |    0.0000 |
+| GP          |  0.7128 |      0.0658 |    0.0000 |
+| OPM         |  0.0845 |      0.0614 |    0.1691 |
+| LIQ         |  0.0104 |      0.0035 |    0.0027 |
+| CH          |  0.7959 |      0.1283 |    0.0000 |
+| DIV_DUMMY   | -0.3586 |      0.0142 |    0.0000 |
+| ROE          | -0.1303 |      0.1687 |    0.4400 |
+| EBITDA_TA    |  0.3967 |      0.3357 |    0.2373 |
+| NPM          |  0.0017 |      0.0035 |    0.6319 |
+| TANG         | -0.0340 |      0.0460 |    0.4608 |
+| ROA          |  0.4228 |      0.2900 |    0.1449 |
+| GROWTH_SALES |  0.0013 |      0.0027 |    0.6196 |
+| FCF_TA       |  0.0442 |      0.0491 |    0.3674 |
 
-
-<img width="1040" height="403" alt="image" src="https://github.com/user-attachments/assets/32fa7572-6338-4a09-96f4-99565aa22e70" />
-<img width="1991" height="591" alt="image" src="https://github.com/user-attachments/assets/615358c4-162a-4216-b54b-f0602cf57a43" />
-
-
-<img width="1040" height="403" alt="image" src="https://github.com/user-attachments/assets/7f9639f1-45f7-458b-ae59-de448f799849" />
+<img width="1187" height="690" alt="image" src="https://github.com/user-attachments/assets/5311ffef-6e77-4eb2-99ad-081500aa041f" />
 
