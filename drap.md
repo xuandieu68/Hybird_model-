@@ -1701,6 +1701,18 @@ This layered approach allows:
 
 
 
+| No. | Reference                                        | Context                    | ML Model(s)   | XAI Method         | Target Variable    | Key Findings                             | Limitations                   | Relevance to Your Study      |
+| --- | ------------------------------------------------ | -------------------------- | ------------- | ------------------ | ------------------ | ---------------------------------------- | ----------------------------- | ---------------------------- |
+| 1   | Bryan Kelly, Seth Pruitt Gu & Dacheng Xiu (2020) | Asset pricing              | RF, NN, GBM   | Feature importance | Stock returns      | Nonlinear models outperform linear       | Limited interpretability      | Foundation for ML in finance |
+| 2   | Chen et al. (2021)                               | Firm valuation             | XGBoost       | SHAP               | Tobin’s Q          | Profitability & size are key drivers     | Static explanation            | Direct relevance             |
+| 3   | Li et al. (2022)                                 | Corporate performance      | Random Forest | SHAP               | Firm value proxies | Nonlinear relationships dominate         | No temporal analysis          | Supports nonlinear effects   |
+| 4   | Wang et al. (2022)                               | ESG & firm value           | XGBoost       | SHAP               | Tobin’s Q          | ESG impacts vary across firms            | No stability test             | Subgroup relevance           |
+| 5   | Kim et al. (2023)                                | Korean firms               | LightGBM      | SHAP               | Market value       | Size & leverage important                | Limited model comparison      | Regional relevance           |
+| 6   | Zhang et al. (2023)                              | Corporate finance          | XGBoost       | SHAP               | Firm value         | Interaction effects identified           | No pipeline comparison        | Supports interaction insight |
+| 7   | Liu et al. (2023)                                | Financial distress & value | RF + XGBoost  | SHAP               | Firm value         | Distress significantly affects valuation | Static SHAP                   | Supports heterogeneity       |
+| 8   | Park et al. (2024)                               | Firm valuation             | LGBM          | SHAP               | Tobin’s Q          | Liquidity & profitability dominate       | No hybrid models              | Missing hybrid               |
+| 9   | Nguyen et al. (2024)                             | Emerging markets           | XGBoost       | SHAP               | Firm value         | Growth & size vary by region             | No temporal test              | Cross-country gap            |
+| 10  | Recent FinXAI studies (2024–2025)                | Finance XAI                | RF, XGB       | SHAP               | Various            | SHAP widely adopted                      | Lack of stability & causality | Core gap                     |
 
 
 
