@@ -106,6 +106,21 @@ Sử dụng các cặp mô hình đặc thù cho từng thiết kế này, chún
 
 <img width="762" height="741" alt="image" src="https://github.com/user-attachments/assets/19d649ec-df8e-4dff-8c6d-a7d26394234b" />
 
+<img width="641" height="453" alt="image" src="https://github.com/user-attachments/assets/430f7545-c61b-4281-876c-ad889e69de1d" />
+<img width="654" height="453" alt="image" src="https://github.com/user-attachments/assets/a86c3491-ea69-4928-95a8-e3c66b5c9249" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/65eae4c2-642a-4861-88f7-4f6ba874efac" />
+<img width="674" height="453" alt="image" src="https://github.com/user-attachments/assets/02e74099-1fcd-4aca-925e-9d4a8d096854" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/ddac38a5-8c10-440e-a755-3b7577aea57f" />
+<img width="666" height="453" alt="image" src="https://github.com/user-attachments/assets/2a75aa6a-cfab-4b94-8452-2afe3ee40263" />
+
+
+| ![Image 1](https://github.com/user-attachments/assets/430f7545-c61b-4281-876c-ad889e69de1d) | ![Image 2](https://github.com/user-attachments/assets/77d28c8c-72b6-46ee-a784-da7eafe3830e) |
+|:----------------------------------------------------------:|:-----------------------------------------------------------:|
+| ![Image 7](https://github.com/user-attachments/assets/2a75aa6a-cfab-4b94-8452-2afe3ee40263)  | ![Image 4](https://github.com/user-attachments/assets/65eae4c2-642a-4861-88f7-4f6ba874efac) |
+| ![Image 5](https://github.com/user-attachments/assets/02e74099-1fcd-4aca-925e-9d4a8d096854) | ![Image 6](https://github.com/user-attachments/assets/ddac38a5-8c10-440e-a755-3b7577aea57f) | 
+
+
+
 
 # DML with LGBM
 Lựa chọn lgbm để làm base cho DML là bởi vì độ ổn định mô hình thể hiện trong các kết quả metric ở cả phương pháp time sẻies cv hay là rolling. 
@@ -132,3 +147,11 @@ theo thứ tự các feature important  và shap important của lgbm , nghiên 
 
 <img width="1187" height="690" alt="image" src="https://github.com/user-attachments/assets/5311ffef-6e77-4eb2-99ad-081500aa041f" />
 
+| Term       |    coef |   std err |       t |   P>|t| |   2.5 % |   97.5 % | Treatment_Base   |
+|:-----------|--------:|----------:|--------:|--------:|--------:|---------:|:-----------------|
+| OPM        |  0.0619 |    0.0569 |  1.0876 |  0.2768 | -0.0555 |   0.1735 | OPM              |
+| OPM_sq     | -0.0039 |    0.0024 | -1.6444 |  0.1001 | -0.0086 |   0.0007 | OPM              |
+| LEV        |  0.4553 |    0.0958 |  4.7512 |  0.0000 |  0.2675 |   0.6432 | LEV              |
+| LEV_sq     |  0.1632 |    0.0990 |  1.6476 |  0.0994 | -0.0303 |   0.3573 | LEV              |
+| Z_SCORE    |  0.6909 |    0.0870 |  7.9372 |  0.0000 |  0.5252 |   0.8615 | Z_SCORE          |
+| Z_SCORE_sq |  0.0601 |    0.0121 |  4.9746 |  0.0000 |  0.0355 |   0.0837 | Z_SCORE          |
