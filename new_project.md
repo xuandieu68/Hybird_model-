@@ -57,7 +57,7 @@ Tables 2.1 and 2.2 report the predictive performance of linear and nonlinear mod
 <img width="855" height="547" alt="image" src="https://github.com/user-attachments/assets/6792c3ae-6092-4085-ac6f-7c78b25260a3" />
 
 ## feature important 
-### cv 
+### cv  ( Appendix.)
 
 <img width="1040" height="403" alt="image" src="https://github.com/user-attachments/assets/c892b64e-4591-4f79-b11d-8e51e14c9192" />
 
@@ -90,6 +90,14 @@ Figure 1 presents the SHAP beeswarm plot for LightGBM, revealing both the rankin
 
 The SHAP dependence plots reveal that the relationships between financial indicators and firm value are strongly nonlinear and heterogeneous. CH, SIZE, Z_SCORE, and LIQ generally show positive effects on predicted firm value, although these effects are not constant across their distributions. In particular, SIZE and Z_SCORE exhibit threshold-type patterns, while LIQ and CH display positive effects with diminishing or heterogeneous marginal contributions at higher levels. LEV shows an inverted U-shaped relationship, suggesting that moderate leverage may enhance firm value whereas excessive leverage is penalized. By contrast, OPM presents a more complex and interaction-dependent pattern, indicating that the effect of operating profitability cannot be interpreted in isolation. Overall, the color dispersion across the plots confirms the presence of interaction effects, particularly involving OPM and SIZE. These findings suggest that firm value is driven by conditional and nonlinear mechanisms, which are better captured by machine learning models than by a purely linear framework.
 
+## Average SHAP Waterfall Plot for Market:
+###  KSE
+
+<img width="837" height="622" alt="image" src="https://github.com/user-attachments/assets/dd9df907-25dd-4e70-a97c-badf7d27d2f4" />
+
+### KOSDAQ
+
+<img width="837" height="622" alt="image" src="https://github.com/user-attachments/assets/ef2c22a4-1956-46b5-a11c-e68a1ce791cd" />
 
 ## DML with LGBM
 
